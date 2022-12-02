@@ -114,7 +114,42 @@ func partTwo() {
 	fmt.Println(points)
 }
 func main() {
-	partOne()
-	fmt.Println("------")
-	partTwo()
+	simplifiedPartTwo()
+}
+
+// Looking at it from a different angle (a few hours later)
+
+func simplifiedPartOne() {
+	input, _ := f.ReadFile("input")
+	points := [][]int{
+		{4, 1, 7},
+		{8, 5, 2},
+		{3, 9, 6},
+	}
+	score := 0
+	for _, play := range strings.Split(string(input), "\n") {
+		hand := strings.Split(play, " ")
+		opponent := []rune(hand[0])[0] % 65
+		me := []rune(hand[1])[0] % 88
+		score += points[me][opponent]
+	}
+	fmt.Println(score)
+}
+
+func simplifiedPartTwo() {
+	input, _ := f.ReadFile("input")
+	points := [][]int{
+		{3, 4, 8},
+		{1, 5, 9},
+		{2, 6, 7},
+	}
+	score := 0
+	for _, play := range strings.Split(string(input), "\n") {
+		hand := strings.Split(play, " ")
+		opponent := []rune(hand[0])[0] % 65
+		result := []rune(hand[1])[0] % 88
+		score += points[opponent][result]
+	}
+
+	fmt.Println(score)
 }
