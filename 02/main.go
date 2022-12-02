@@ -86,9 +86,8 @@ func cheat(wantedOutcome outcome, opponent symbol) symbol {
 	return symbol("")
 }
 
-func partOne() {
-	data, _ := f.ReadFile("input")
-	dataString := strings.ReplaceAll(string(data), "X", "A")
+func partOne(input string) {
+	dataString := strings.ReplaceAll(input, "X", "A")
 	dataString = strings.ReplaceAll(dataString, "Y", "B")
 	dataString = strings.ReplaceAll(dataString, "Z", "C")
 
@@ -101,11 +100,10 @@ func partOne() {
 	fmt.Println(points)
 }
 
-func partTwo() {
-	data, _ := f.ReadFile("input")
+func partTwo(input string) {
 
 	points := 0
-	for _, game := range strings.Split(string(data), "\n") {
+	for _, game := range strings.Split(input, "\n") {
 		tabs := strings.Split(game, " ")
 		strategy := cheat(expectedOutcome[tabs[1]], symbol(tabs[0]))
 		points += int(strategy.battle(symbol(tabs[0])))
@@ -114,20 +112,20 @@ func partTwo() {
 	fmt.Println(points)
 }
 func main() {
-	simplifiedPartTwo()
+	input, _ := f.ReadFile("input")
+	finalOne(string(input))
 }
 
 // Looking at it from a different angle (a few hours later)
 
-func simplifiedPartOne() {
-	input, _ := f.ReadFile("input")
+func simplifiedPartOne(input string) {
 	points := [][]int{
 		{4, 1, 7},
 		{8, 5, 2},
 		{3, 9, 6},
 	}
 	score := 0
-	for _, play := range strings.Split(string(input), "\n") {
+	for _, play := range strings.Split(input, "\n") {
 		hand := strings.Split(play, " ")
 		opponent := []rune(hand[0])[0] % 65
 		me := []rune(hand[1])[0] % 88
@@ -136,15 +134,14 @@ func simplifiedPartOne() {
 	fmt.Println(score)
 }
 
-func simplifiedPartTwo() {
-	input, _ := f.ReadFile("input")
+func simplifiedPartTwo(input string) {
 	points := [][]int{
 		{3, 4, 8},
 		{1, 5, 9},
 		{2, 6, 7},
 	}
 	score := 0
-	for _, play := range strings.Split(string(input), "\n") {
+	for _, play := range strings.Split(input, "\n") {
 		hand := strings.Split(play, " ")
 		opponent := []rune(hand[0])[0] % 65
 		result := []rune(hand[1])[0] % 88
