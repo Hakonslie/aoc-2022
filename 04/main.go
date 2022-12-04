@@ -28,7 +28,6 @@ func p1(lines []string) int {
 		elfOne := strings.Split(pair[0], "-")
 		elfTwo := strings.Split(pair[1], "-")
 
-		// pair: [55-75 9-55] is: true
 		overlapping := false
 		if convertDisregardError(elfOne[0]) >= convertDisregardError(elfTwo[0]) && convertDisregardError(elfOne[1]) <= convertDisregardError(elfTwo[1]) {
 			overlapping = true
@@ -54,7 +53,6 @@ func p2(lines []string) int {
 		elfTwo1 := convertDisregardError(elfTwo[0])
 		elfTwo2 := convertDisregardError(elfTwo[1])
 
-		// pair: [31-94 30-39] is: false
 		overlapping := false
 		if elfOne1 >= elfTwo1 && elfOne1 <= elfTwo2 {
 			overlapping = true
