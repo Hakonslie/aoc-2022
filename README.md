@@ -1,2 +1,2 @@
 # aoc-2022
-My attempts at aoc
+My attempts at aoc using Golang
