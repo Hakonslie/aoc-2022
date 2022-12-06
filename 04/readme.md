@@ -1,4 +1,4 @@
-## Day 
+## Day 4
 
 ### Solution
 Ugh, forgot to convert to number for a while and couldnt understand why the matching didnt make sense.

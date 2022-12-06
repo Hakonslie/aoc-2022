@@ -144,6 +144,7 @@ func simplifiedPartTwo(input string) {
 	for _, play := range strings.Split(input, "\n") {
 		hand := strings.Split(play, " ")
 		opponent := []rune(hand[0])[0] % 65
+		// Can be something like strings.Index("ABC",hand[0]) instead
 		result := []rune(hand[1])[0] % 88
 		score += points[opponent][result]
 	}
