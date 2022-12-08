@@ -32,16 +32,7 @@ func (t tree) isVisible(direction int, asking int, f forest) bool {
 	}
 
 	visible := false
-	switch direction {
-	case 0:
-		visible = f[t.neighbours[direction]].isVisible(direction, asking, f)
-	case 1:
-		visible = f[t.neighbours[direction]].isVisible(direction, asking, f)
-	case 2:
-		visible = f[t.neighbours[direction]].isVisible(direction, asking, f)
-	case 3:
-		visible = f[t.neighbours[direction]].isVisible(direction, asking, f)
-	}
+	visible = f[t.neighbours[direction]].isVisible(direction, asking, f)
 	return visible
 }
 
@@ -101,18 +92,8 @@ func (t tree) isVisibleView(direction int, asking int, f forest) int {
 	if t.onEdge {
 		return 1
 	}
+	visible := f[t.neighbours[direction]].isVisibleView(direction, asking, f)
 
-	visible := 0
-	switch direction {
-	case 0:
-		visible = f[t.neighbours[direction]].isVisibleView(direction, asking, f)
-	case 1:
-		visible = f[t.neighbours[direction]].isVisibleView(direction, asking, f)
-	case 2:
-		visible = f[t.neighbours[direction]].isVisibleView(direction, asking, f)
-	case 3:
-		visible = f[t.neighbours[direction]].isVisibleView(direction, asking, f)
-	}
 	return visible + 1
 }
 
