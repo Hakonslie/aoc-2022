@@ -1,0 +1,3 @@
+## Day 
+
+### First solution
