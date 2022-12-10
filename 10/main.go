@@ -13,7 +13,7 @@ var f embed.FS
 func main() {
 	input, _ := f.ReadFile("input")
 	lines := strings.Split(string(input), "\n")
-	p1(lines)
+	fmt.Println(p1(lines))
 }
 
 type program struct {
