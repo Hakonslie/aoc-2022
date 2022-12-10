@@ -13,7 +13,7 @@ var f embed.FS
 func main() {
 	input, _ := f.ReadFile("input")
 	lines := strings.Split(string(input), "\n")
-	fmt.Println(p1(lines))
+	fmt.Println(p2(lines))
 }
 
 type program struct {
@@ -73,11 +73,11 @@ func (c *crt) tryDraw(cycle int, x int) {
 	if math.Abs(float64(x-(pointer%40))) <= 1 {
 		c.monitor += "#"
 	} else {
-		c.monitor += "."
+		c.monitor += " "
 	}
 }
 
-func p2(lines []string) {
+func p2(lines []string) int {
 	pr := program{inCycle: 0, x: 1}
 	crt := crt{}
 
@@ -102,4 +102,5 @@ func p2(lines []string) {
 	for m := 0; m <= 220; m += 40 {
 		fmt.Println(crt.monitor[m : m+40])
 	}
+	return 0
 }
