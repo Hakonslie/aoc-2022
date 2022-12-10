@@ -7,7 +7,7 @@ Wow. Again I was stuck on something really annoying.
 #### Part 1
 On part one I was stuck because I didn't read well enough, even though I
 tried so hard to. I didn't pick up that it was during a cycle that I would
-check the signal. So therefore added the start and end methods instead of having just one
+check the signal. So I added the start and end methods instead of having just one
 
 #### Part 2
 On part 2 I could re-use all of my current work, but just had to make some

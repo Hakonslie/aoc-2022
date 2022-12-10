@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 	"fmt"
+	"math"
 	"strings"
 )
 
@@ -12,7 +13,7 @@ var f embed.FS
 func main() {
 	input, _ := f.ReadFile("input")
 	lines := strings.Split(string(input), "\n")
-	fmt.Println(p2(lines))
+	p1(lines)
 }
 
 type program struct {
@@ -35,13 +36,6 @@ func (p *program) strength() int {
 func p1(lines []string) int {
 	ans := 0
 	pr := program{inCycle: 0, x: 1}
-	stopat := make(map[int]interface{})
-	stopat[20] = ""
-	stopat[60] = ""
-	stopat[100] = ""
-	stopat[140] = ""
-	stopat[180] = ""
-	stopat[220] = ""
 	for _, l := range lines {
 		var instruction string
 		var x int
@@ -49,18 +43,18 @@ func p1(lines []string) int {
 		switch instruction {
 		case "noop":
 			pr.startCycle()
-			if _, ok := stopat[pr.inCycle]; ok {
+			if (pr.inCycle+20)%40 == 0 {
 				ans += pr.strength()
 			}
 			pr.endCycle(nil)
 		case "addx":
 			pr.startCycle()
-			if _, ok := stopat[pr.inCycle]; ok {
+			if (pr.inCycle+20)%40 == 0 {
 				ans += pr.strength()
 			}
 			pr.endCycle(nil)
 			pr.startCycle()
-			if _, ok := stopat[pr.inCycle]; ok {
+			if (pr.inCycle+20)%40 == 0 {
 				ans += pr.strength()
 			}
 			pr.endCycle(&x)
@@ -76,15 +70,14 @@ type crt struct {
 
 func (c *crt) tryDraw(cycle int, x int) {
 	pointer := cycle - 1
-	if (pointer)%40 >= x-1 && (pointer)%40 <= x+1 {
+	if math.Abs(float64(x-(pointer%40))) <= 1 {
 		c.monitor += "#"
 	} else {
 		c.monitor += "."
 	}
 }
 
-func p2(lines []string) int {
-	ans := 0
+func p2(lines []string) {
 	pr := program{inCycle: 0, x: 1}
 	crt := crt{}
 
@@ -109,6 +102,4 @@ func p2(lines []string) int {
 	for m := 0; m <= 220; m += 40 {
 		fmt.Println(crt.monitor[m : m+40])
 	}
-
-	return ans
 }
