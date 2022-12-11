@@ -10,4 +10,7 @@ I actually stumbled passed GDC and LCM, but I didn't manage to understand it wel
 enough to implement it. So I kept searching for other ways. 
 
 In the end I had to have a peek at reddit to see the discussions. Now I'm mad and sad that I couldn't do or understand this.
-I understood that I somehow had to reduce the size of the numbers without diving them. I still don't understand how it works tbh. Whatever.
+I understood that I somehow had to reduce the size of the numbers without diving them.
+
+I was looking for stuff to modulo, but multiplying all the divisers didnt cross my mind. I thought it wouldn't work due to the
+additions sprinkled in. Apparently modulo operations don't care about additions though.
